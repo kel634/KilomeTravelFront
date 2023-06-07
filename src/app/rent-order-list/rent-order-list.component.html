@@ -1,0 +1,15 @@
+<h1>Rent Orders: {{rentOrders.length}}</h1>
+
+<button mat-stroked-button color="primary" (click)="addNewOrderDialog()">Add New</button>
+
+<div class="card-container">
+  <mat-card class="card" *ngFor="let rentOrder of rentOrders">
+    <mat-card-header>
+      <mat-card-title>Actions Buttons</mat-card-title>
+      <mat-card-subtitle>End</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end">
+      <button mat-stroked-button (click)="returnOrderDialog(rentOrder.id)">Return</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

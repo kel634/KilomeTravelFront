@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Add new rent order</h1>
+<div mat-dialog-content>
+  <p>Select the type</p>
+  
+  <mat-radio-group aria-label="Select the type" [(ngModel)]="selectedRentalItemTypeId" (change)="selectedRentalItemTypeChange($event)">
+    <mat-radio-button *ngFor="let rentalItemType of rentalItemTypes" [value]="rentalItemType.id">{{rentalItemType.name}}</mat-radio-button>
+  </mat-radio-group>
+
+  <mat-form-field>
+    <mat-label>Select Rental Item</mat-label>
+    <input type="text"
+           placeholder="Pick one"
+           aria-label="Rental Item"
+           matInput
+           [formControl]="rentalItemControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='setRentalItem($event.option.value)'>
+      <mat-option *ngFor="let item of filteredRentalItems | async" [value]="item">
+        {{item.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <h2>Prices</h2>
+
+  <mat-form-field>
+    <mat-label>Euro</mat-label>
+    <input matInput [(ngModel)]="priceEuro" readonly>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>RON</mat-label>
+    <input matInput [(ngModel)]="priceRon" readonly>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>USD</mat-label>
+    <input matInput [(ngModel)]="priceUsd" readonly>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Reservation Time</mat-label>
+    <input matInput [(ngModel)]="data.reservationTime">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</div>

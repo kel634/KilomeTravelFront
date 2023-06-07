@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Return an order</h1>
+<div mat-dialog-content>
+
+  <mat-form-field>
+    <mat-label>Return Time</mat-label>
+    <input matInput [(ngModel)]="data.returnTime">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Fuel Penalty</mat-label>
+    <input matInput [(ngModel)]="data.fuelPenalty">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Damage Penalty</mat-label>
+    <input matInput [(ngModel)]="data.damagePenalty">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Damage Description</mat-label>
+    <input matInput [(ngModel)]="data.damageDescription">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</div>
